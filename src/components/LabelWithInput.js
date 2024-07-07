@@ -7,8 +7,8 @@ import React from 'react';
 
 function LabelWithInput({ label, type, inputProps, passwordVisibleIcon, passwordVisibleIconHandler, ...props }) {
   return (
-    <Stack>
-      {type === 'text' && <TextField label={label} type={type} variant="standard" {...props} />}
+    <Stack flex={1}>
+      {type === 'text' && <TextField label={label} type={type} variant="standard" {...(props || {})} />}
       {type === 'email' && (
         <TextField
           label={label}
@@ -22,7 +22,7 @@ function LabelWithInput({ label, type, inputProps, passwordVisibleIcon, password
               </InputAdornment>
             ),
           }}
-          {...props}
+          {...(props || {})}
         />
       )}
       {type === 'password' && (
@@ -43,7 +43,7 @@ function LabelWithInput({ label, type, inputProps, passwordVisibleIcon, password
               </InputAdornment>
             ),
           }}
-          {...props}
+          {...(props || {})}
         />
       )}
     </Stack>

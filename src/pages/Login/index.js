@@ -7,7 +7,6 @@ import LabelWithInput from '../../components/LabelWithInput';
 import Logo from '../../components/Logo';
 import UserType from '../../components/UserType';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
-import { useThemeContext } from '../../context/ThemeContextProvider';
 import { setCookie } from '../../helpers/authentication/setCookie';
 import * as API_URL from '../../network/Api';
 import AXIOS from '../../network/axios';
@@ -15,7 +14,7 @@ import AXIOS from '../../network/axios';
 function Login({ loginFor }) {
   const theme = useTheme();
   const navigate = useNavigate();
-  const { setMode } = useThemeContext();
+  // const { setMode } = useThemeContext();
   const { setUser } = useGlobalContext();
 
   const [data, setData] = useState({ userType: 'user' });
@@ -41,7 +40,7 @@ function Login({ loginFor }) {
 
   const passwordVisibleIconHandler = () => {
     setPasswordVisibleIcon((prev) => !prev);
-    setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+    // setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   const formHandler = (event) => {

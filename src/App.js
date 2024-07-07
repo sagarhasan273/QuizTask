@@ -8,7 +8,7 @@ import './assets/scss/theme.scss';
 
 function App() {
   return (
-    <Box>
+    <Box sx={{ height: '100vh', overflowY: 'hidden', backgroundColor: '#faf7ff' }}>
       <ToastContainer />
       <Router />
     </Box>

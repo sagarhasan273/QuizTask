@@ -1,3 +1,5 @@
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -18,7 +20,9 @@ root.render(
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
             <GlobalContextProvider>
-              <App />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <App />
+              </LocalizationProvider>
             </GlobalContextProvider>
           </QueryClientProvider>
         </BrowserRouter>

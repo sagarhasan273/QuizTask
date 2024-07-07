@@ -1,9 +1,8 @@
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import QuizIcon from '@mui/icons-material/Quiz';
 import { Box, Button, Stack, styled, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
+import { admin_sidebar, menubar_navigate_afterClick } from './helper';
 
 const CustomTypography = styled(Typography)(() => ({
   fontSize: '14px',
@@ -31,50 +30,31 @@ function SideMenuBar() {
   const { setDrawers } = useGlobalContext();
 
   const sideMenuBarHandler = (event) => {
-    if (event === 'dashboard') {
-      navigate('/dashboard');
-    }
-    if (event === 'questions') {
-      navigate('/questions');
-    }
-    if (event === 'add-question') {
-      navigate('/add-question');
-    }
-    if (event === 'delete-question') {
-      navigate('/delete-question');
-    }
+    menubar_navigate_afterClick.map((item) => {
+      if (event === item.event) {
+        navigate(item.path);
+      }
+      return '';
+    });
+
     setDrawers((prev) => ({ ...prev, sideMenuBar: false }));
   };
+
+  const menu_items = admin_sidebar;
 
   return (
     <Box sx={{ width: '200px' }}>
       <Stack sx={{ backgroundColor: '#413F78', color: 'white', padding: '13px' }}>
         <Typography sx={{ fontSize: '20px', textAlign: 'center' }}>Menu</Typography>
       </Stack>
-      <CustomStack>
-        <CustomButton onClick={() => sideMenuBarHandler('dashboard')} disableRipple>
-          <DashboardIcon sx={{ color: 'white', fontSize: '16px' }} />
-          <CustomTypography>Dashboard</CustomTypography>
-        </CustomButton>
-      </CustomStack>
-      <CustomStack>
-        <CustomButton onClick={() => sideMenuBarHandler('questions')} disableRipple>
-          <QuizIcon sx={{ color: 'white', fontSize: '16px' }} />
-          <CustomTypography>Questions</CustomTypography>
-        </CustomButton>
-      </CustomStack>
-      <CustomStack>
-        <CustomButton onClick={() => sideMenuBarHandler('add-question')} disableRipple>
-          <QuizIcon sx={{ color: 'white', fontSize: '16px' }} />
-          <CustomTypography>Add Question</CustomTypography>
-        </CustomButton>
-      </CustomStack>
-      <CustomStack>
-        <CustomButton onClick={() => sideMenuBarHandler('delete-question')} disableRipple>
-          <QuizIcon sx={{ color: 'white', fontSize: '16px' }} />
-          <CustomTypography>Delete Questions</CustomTypography>
-        </CustomButton>
-      </CustomStack>
+      {menu_items.map((item, index) => (
+        <CustomStack key={index}>
+          <CustomButton onClick={() => sideMenuBarHandler(item?.value)} disableRipple>
+            {item.icon}
+            <CustomTypography>{item?.label}</CustomTypography>
+          </CustomButton>
+        </CustomStack>
+      ))}
     </Box>
   );
 }
