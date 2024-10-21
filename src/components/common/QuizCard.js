@@ -1,7 +1,11 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
+import { useMutation } from 'react-query';
+import { successMsg } from '../../common/successMsg';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
+import * as API_URL from '../../network/Api';
+import AXIOS from '../../network/axios';
 import QuizTimer from './QuizTimer';
 
 const quizStatusStyle = (quizStatus) => {
@@ -33,6 +37,22 @@ function QuizCard({ data }) {
   const { userType } = user;
 
   const [quizStatus, setQuizeStatus] = useState(getQuizStatus(moment(data?.startDateTime), moment(data?.endDateTime)));
+
+  const quizRegisterQuery = useMutation((data) => AXIOS.post(API_URL.USER_QUIZ_REGISTER, data), {
+    onSuccess: (data) => {
+      if (data?.status) {
+        successMsg(data?.message, 'success');
+      } else {
+        successMsg(data?.message, 'error');
+      }
+    },
+  });
+
+  const handleJoinRegister = () => {
+    if (quizStatus === 'Ongoing') {
+      console.log('join.');
+    } else if (!!user && !!data) quizRegisterQuery.mutate({ userId: user?._id, quizId: data?._id });
+  };
 
   useEffect(() => {
     setQuizeStatus(getQuizStatus(moment(data?.startDateTime), moment(data?.endDateTime)));
@@ -100,6 +120,7 @@ function QuizCard({ data }) {
             sx={{ height: '25px' }}
             disabled={quizStatus === 'Ended' || userType === 'admin'}
             color="quizDiabled"
+            onClick={handleJoinRegister}
           >
             <Typography
               sx={{ fontSize: '14px', color: 'white', fontWeight: '500', textAlign: 'center', lineHeight: '18.45px' }}

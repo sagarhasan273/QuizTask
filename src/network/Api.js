@@ -1,6 +1,6 @@
 export const API_URL = 'http://localhost:5000/';
 
-// const USER_ENDPOINT = 'user';
+const USER_ENDPOINT = 'user';
 const ADMIN_ENDPOINT = 'admin';
 
 export const USER_LOGIN = `auth/user/login/`;
@@ -12,3 +12,5 @@ export const ADD_QUESTIONS = `${ADMIN_ENDPOINT}/question/add`;
 
 export const ADD_QUIZ = `${ADMIN_ENDPOINT}/quiz/add`;
 export const GET_QUIZZES = `${ADMIN_ENDPOINT}/quiz/quizzes`;
+
+export const USER_QUIZ_REGISTER = `${USER_ENDPOINT}/quiz-register`;
