@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import React from 'react';
 import Quizzes from '../../components/Quizzes';
 
-function AdminDashboard() {
+function UserDashboard() {
   return (
     <Box p={1} sx={{ height: 'calc(100% - 82px)' }}>
       <Quizzes />
@@ -10,4 +10,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard;
+export default UserDashboard;

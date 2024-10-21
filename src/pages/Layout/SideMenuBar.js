@@ -2,7 +2,7 @@ import { Box, Button, Stack, styled, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
-import { admin_sidebar, menubar_navigate_afterClick } from './helper';
+import { admin_sidebar, menubar_navigate_afterClick, user_sidebar } from './helper';
 
 const CustomTypography = styled(Typography)(() => ({
   fontSize: '14px',
@@ -26,6 +26,7 @@ const CustomStack = styled(Stack)(() => ({
 }));
 
 function SideMenuBar() {
+  const { user } = useGlobalContext();
   const navigate = useNavigate();
   const { setDrawers } = useGlobalContext();
 
@@ -40,7 +41,10 @@ function SideMenuBar() {
     setDrawers((prev) => ({ ...prev, sideMenuBar: false }));
   };
 
-  const menu_items = admin_sidebar;
+  let menu_items = admin_sidebar;
+  if (user?.userType === 'user') {
+    menu_items = user_sidebar;
+  }
 
   return (
     <Box sx={{ width: '200px' }}>

@@ -11,6 +11,7 @@ function Question({ data, index, componentType = 'quizs', onClick = (i) => conso
     backgroundColor: componentType === 'quiz' ? '#03bf00' : '#413F78',
     cursor: componentType === 'quiz' ? 'pointer' : '',
   };
+
   return (
     <Box sx={{ p: '15px 20px', backgroundColor: '#3530a1', maxWidth: '700px', borderRadius: '10px' }}>
       <Stack gap="5px">

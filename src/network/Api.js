@@ -11,3 +11,4 @@ export const GET_QUESTIONS = `${ADMIN_ENDPOINT}/questions`;
 export const ADD_QUESTIONS = `${ADMIN_ENDPOINT}/question/add`;
 
 export const ADD_QUIZ = `${ADMIN_ENDPOINT}/quiz/add`;
+export const GET_QUIZZES = `${ADMIN_ENDPOINT}/quiz/quizzes`;

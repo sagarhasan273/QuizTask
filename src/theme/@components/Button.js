@@ -32,7 +32,7 @@ export default function Button() {
         }),
 
         '&.Mui-disabled': {
-          opacity: '0.3',
+          opacity: '0.5',
 
           ...(ownerState.variant === 'text' && {
             color: `${theme.palette[ownerState.color].main}`,

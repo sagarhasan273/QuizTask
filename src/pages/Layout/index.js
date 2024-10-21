@@ -8,6 +8,7 @@ import { useGlobalContext } from '../../context/GlobalContextProvider';
 import * as API_URL from '../../network/Api';
 import AXIOS from '../../network/axios';
 import { admin_routes } from '../../routes/admin_routes';
+import { user_routes } from '../../routes/user_routes';
 import SideMenuBar from './SideMenuBar';
 
 export default function Layout() {
@@ -36,11 +37,15 @@ export default function Layout() {
       </Stack>
     );
   }
+  let routes = admin_routes;
+  if (user?.userType === 'user') {
+    routes = user_routes;
+  }
   return (
-    <Box>
+    <Box sx={{ height: '100vh' }}>
       <TopBar user={user} />
       <Routes>
-        {admin_routes?.map((route, index) => (
+        {routes?.map((route, index) => (
           <Route key={index} path={route?.path} element={route?.component} />
         ))}
       </Routes>

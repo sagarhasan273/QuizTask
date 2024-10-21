@@ -25,6 +25,12 @@ const getPalette = (mode = 'light') => {
       secondary2: '#FFF5F8',
       contrastText: '#ffffff',
     },
+    quizDiabled: {
+      main: '#7a75ff',
+      secondary: '#CC274B',
+      secondary2: '#FFF5F8',
+      contrastText: '#ffffff',
+    },
     error: {
       main: '#DD5B63',
       contrastText: '#ffffff',

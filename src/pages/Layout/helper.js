@@ -31,6 +31,18 @@ export const admin_sidebar = [
     icon: <DeleteIcon sx={{ color: 'white', fontSize: '16px' }} />,
   },
 ];
+export const user_sidebar = [
+  {
+    label: 'Dashboard',
+    value: 'dashboard',
+    icon: <DashboardIcon sx={{ color: 'white', fontSize: '16px' }} />,
+  },
+  {
+    label: 'Quiz',
+    value: 'quiz',
+    icon: <QuizIcon sx={{ color: 'white', fontSize: '16px' }} />,
+  },
+];
 
 export const menubar_navigate_afterClick = [
   {
@@ -40,6 +52,10 @@ export const menubar_navigate_afterClick = [
   {
     event: 'initialize-quiz',
     path: '/initialize-quiz',
+  },
+  {
+    event: 'quiz',
+    path: '/quiz',
   },
   {
     event: 'questions',
