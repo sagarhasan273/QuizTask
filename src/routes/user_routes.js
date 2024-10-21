@@ -7,7 +7,7 @@ export const user_routes = [
     component: <UserDashboard />,
   },
   {
-    path: '/quiz',
+    path: '/quiz/*',
     component: <UserQuiz />,
   },
 ];

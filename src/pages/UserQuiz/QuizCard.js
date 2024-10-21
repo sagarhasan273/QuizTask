@@ -3,10 +3,10 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { successMsg } from '../../common/successMsg';
+import QuizTimer from '../../components/common/QuizTimer';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
 import * as API_URL from '../../network/Api';
 import AXIOS from '../../network/axios';
-import QuizTimer from './QuizTimer';
 
 const quizStatusStyle = (quizStatus) => {
   if (quizStatus === 'New') {
@@ -32,9 +32,8 @@ const getQuizStatus = (startTime, endTime) => {
   return 'New';
 };
 
-function QuizCard({ data }) {
+function QuizCard({ data, onClick }) {
   const { user } = useGlobalContext();
-  const { userType } = user;
 
   const [quizStatus, setQuizeStatus] = useState(getQuizStatus(moment(data?.startDateTime), moment(data?.endDateTime)));
 
@@ -50,7 +49,7 @@ function QuizCard({ data }) {
 
   const handleJoinRegister = () => {
     if (quizStatus === 'Ongoing') {
-      console.log('join.');
+      if (onClick) onClick(data);
     } else if (!!user && !!data) quizRegisterQuery.mutate({ userId: user?._id, quizId: data?._id });
   };
 
@@ -118,7 +117,7 @@ function QuizCard({ data }) {
             variant="contained"
             size="small"
             sx={{ height: '25px' }}
-            disabled={quizStatus === 'Ended' || userType === 'admin' || user?.quizzes?.includes(data?._id)}
+            disabled={quizStatus === 'Ended' || (user?.quizzes?.includes(data?._id) && quizStatus !== 'Ongoing')}
             color="quizDiabled"
             onClick={handleJoinRegister}
           >

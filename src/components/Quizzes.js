@@ -7,6 +7,7 @@ import QuizCard from './common/QuizCard';
 
 function Quizzes() {
   const [quizzes, setQuizzes] = useState([]);
+
   const quizzesQuery = useQuery([API_URL.GET_QUIZZES], () => AXIOS.get(API_URL.GET_QUIZZES), {
     onSuccess: (response) => {
       if (response?.status) {
@@ -14,9 +15,11 @@ function Quizzes() {
       }
     },
   });
+
   if (quizzesQuery.isLoading) {
     return null;
   }
+
   return (
     <Box
       sx={{

@@ -14,3 +14,4 @@ export const ADD_QUIZ = `${ADMIN_ENDPOINT}/quiz/add`;
 export const GET_QUIZZES = `${ADMIN_ENDPOINT}/quiz/quizzes`;
 
 export const USER_QUIZ_REGISTER = `${USER_ENDPOINT}/quiz-register`;
+export const USER_QUIZZES_REGISTERED = `${USER_ENDPOINT}/quizzes-registered`;
