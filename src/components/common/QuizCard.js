@@ -58,6 +58,8 @@ function QuizCard({ data }) {
     setQuizeStatus(getQuizStatus(moment(data?.startDateTime), moment(data?.endDateTime)));
   }, [quizStatus]);
 
+  console.log(user);
+
   return (
     <Stack
       sx={{
@@ -118,14 +120,14 @@ function QuizCard({ data }) {
             variant="contained"
             size="small"
             sx={{ height: '25px' }}
-            disabled={quizStatus === 'Ended' || userType === 'admin'}
+            disabled={quizStatus === 'Ended' || userType === 'admin' || user?.quizzes?.includes(data?._id)}
             color="quizDiabled"
             onClick={handleJoinRegister}
           >
             <Typography
               sx={{ fontSize: '14px', color: 'white', fontWeight: '500', textAlign: 'center', lineHeight: '18.45px' }}
             >
-              {quizStatus === 'Ongoing' ? 'Join' : 'Register'}
+              {quizStatus === 'Ongoing' ? 'Join' : user?.quizzes?.includes(data?._id) ? 'Registered' : 'Register'}
             </Typography>
           </Button>
         </Stack>
