@@ -14,19 +14,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 
 root.render(
-  <React.StrictMode>
-    <ThemeContextProvider>
-      <GlobalThemeProvider>
-        <BrowserRouter>
-          <QueryClientProvider client={queryClient}>
-            <GlobalContextProvider>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <App />
-              </LocalizationProvider>
-            </GlobalContextProvider>
-          </QueryClientProvider>
-        </BrowserRouter>
-      </GlobalThemeProvider>
-    </ThemeContextProvider>
-  </React.StrictMode>
+  <ThemeContextProvider>
+    <GlobalThemeProvider>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <GlobalContextProvider>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <App />
+            </LocalizationProvider>
+          </GlobalContextProvider>
+        </QueryClientProvider>
+      </BrowserRouter>
+    </GlobalThemeProvider>
+  </ThemeContextProvider>
 );
