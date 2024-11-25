@@ -1,7 +1,7 @@
 import { Box, Stack, styled, Typography } from '@mui/material';
 import React from 'react';
 
-const CustomTypography = styled(Typography)(() => ({
+const CustomTypo = styled(Typography)(() => ({
   color: 'white',
   fontSize: '14px',
 }));
@@ -16,14 +16,12 @@ function Question({ data, index, onClick }) {
     <Box sx={{ p: '15px 20px', backgroundColor: '#3530a1', maxWidth: '700px', borderRadius: '10px' }}>
       <Stack gap="5px">
         <Stack sx={{ p: 1, border: '1px solid white', borderRadius: '10px', backgroundColor: '#413F78' }}>
-          <CustomTypography>
+          <CustomTypo>
             {index + 1}Q. {data.question}
-          </CustomTypography>
+          </CustomTypo>
         </Stack>
         <Stack direction="row" gap={2} justifyContent="center" alignItems="center">
-          <CustomTypography>
-            Answer Type: {data?.answerType === 'multiselect' ? 'Multi-Select' : 'Single Select'}
-          </CustomTypography>
+          <CustomTypo>Answer Type: {data?.answerType === 'multiselect' ? 'Multi-Select' : 'Single Select'}</CustomTypo>
         </Stack>
         <Stack gap="10px">
           {data?.optionsList?.map((item, index) => (
@@ -41,8 +39,8 @@ function Question({ data, index, onClick }) {
                 ...optionStyle(data?.selectedAnswerList?.includes(item.optionLabel)),
               }}
             >
-              <CustomTypography>{item.optionLabel}.</CustomTypography>
-              <CustomTypography>{item.optionValue}</CustomTypography>
+              <CustomTypo>{item.optionLabel}.</CustomTypo>
+              <CustomTypo>{item.optionValue}</CustomTypo>
             </Stack>
           ))}
         </Stack>
