@@ -43,10 +43,6 @@ const getPalette = (mode = 'light') => {
       body: '#3F4254',
       body2: '#8F93A0',
     },
-    grey: {
-      200: 'rgba(0, 0, 0, 0.08)',
-      201: '#EFEFEF',
-    },
     custom: {
       tableLoader: 'rgba(255, 255, 255, 0.7)',
       contrastText: '#ffffff',

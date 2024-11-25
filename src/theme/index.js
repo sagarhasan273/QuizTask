@@ -11,7 +11,9 @@ function GlobalThemeProvider({ children }) {
     const theme = createTheme({
       palette: getPalette(mode),
     });
+
     theme.components = Components(theme);
+
     return theme;
   }, [mode]);
 
