@@ -12,13 +12,16 @@ const getPalette = (mode = 'light') => {
       main: '#636363',
       contrastText: '#ffffff',
     },
+
     success: {
       main: '#417C45',
     },
+
     orange: {
       main: '#FFB017',
       secondary: 'rgba(255, 176, 23, 0.15)',
     },
+
     danger: {
       main: '#DD5B63',
       secondary: '#CC274B',
