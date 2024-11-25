@@ -57,7 +57,7 @@ export default function Button() {
         ...(ownerState.size === 'small' && {
           fontSize: '14px',
           lineHeight: '24px',
-          padding: '6px 16px',
+          padding: '6px 15px',
           gap: '4px',
           fontWeight: 600,
 
